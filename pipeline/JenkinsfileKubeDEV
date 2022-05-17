@@ -16,6 +16,7 @@ node {
 
         stage ( 'Try git' ) {
             sh( "git log -n 1 --pretty=format:'%h'" )
+            sh( "git branch" )
         }
 
         stage( 'Only main' ) {
