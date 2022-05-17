@@ -1,5 +1,4 @@
 node {
-    stages {
         stage( 'Hello' ) {
             echo 'Hello to all'
             sh( 'env' )
@@ -35,5 +34,4 @@ node {
             git_commit = readFile('GIT_COMMIT').trim()
             echo git_commit
         }
-    }
 }
