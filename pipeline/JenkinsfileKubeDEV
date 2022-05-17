@@ -1,5 +1,5 @@
 node {
-        stage( 'Hello' ) {
+        stage( 'Hello A' ) {
             echo 'Hello to all'
             sh( 'env' )
             sh( 'set' )
