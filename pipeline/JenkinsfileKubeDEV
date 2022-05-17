@@ -1,35 +1,35 @@
 node {
-    stage( 'Hello' ) {
-        echo 'Hello to all'
-        sh( 'env' )
-        sh( 'set' )
-    }
-
-    stage( 'Checkout' ) {
-        checkout scm
-    }
-
-    stage( 'Hello2' ) {
-        sh( 'env' )
-        sh( 'set' )
-    }
-
-    stage( 'Only main' ) {
-        when {
-         branch 'main'
+    stages {
+        stage( 'Hello' ) {
+            echo 'Hello to all'
+            sh( 'env' )
+            sh( 'set' )
         }
-        echo 'We are in branch main !!!'
-    }
 
-    stage( 'Upadte vars' ) {
-        sh( 'ls -la' )
-        
-        sh 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH'
-        git_branch = readFile('GIT_BRANCH').trim()
-        echo git_branch
+        stage( 'Checkout' ) {
+            checkout scm
+        }
 
-        sh 'git rev-parse HEAD > GIT_COMMIT'
-        git_commit = readFile('GIT_COMMIT').trim()
-        echo git_commit
+        stage( 'Hello2' ) {
+            sh( 'env' )
+            sh( 'set' )
+        }
+
+        stage( 'Only main' ) {
+            when { branch 'main' }
+            echo 'We are in branch main !!!'
+        }
+
+        stage( 'Upadte vars' ) {
+            sh( 'ls -la' )
+            
+            sh 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH'
+            git_branch = readFile('GIT_BRANCH').trim()
+            echo git_branch
+
+            sh 'git rev-parse HEAD > GIT_COMMIT'
+            git_commit = readFile('GIT_COMMIT').trim()
+            echo git_commit
+        }
     }
 }
