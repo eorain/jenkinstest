@@ -19,11 +19,6 @@ node {
             sh( "git branch" )
         }
 
-        stage( 'Only main' ) {
-            when { branch 'main' }
-            echo 'We are in branch main !!!'
-        }
-
         stage( 'Update vars' ) {
             sh( 'ls -la' )
             
