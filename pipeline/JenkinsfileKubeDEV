@@ -1,6 +1,6 @@
 node {
         stage( 'Hello A' ) {
-            echo 'Hello to all'
+            echo 'Hello from branch ' + scm.branches[0].name 
             sh( 'env' )
             sh( 'set' )
         }
@@ -17,18 +17,6 @@ node {
         stage ( 'Try git' ) {
             sh( "git branch" )
             sh( "git status")
-            echo scm.branches[0].name
-        }
-
-        stage( 'Update vars' ) {
-            sh( 'ls -la' )
-            
-            sh 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH'
-            git_branch = readFile('GIT_BRANCH').trim()
-            echo git_branch
-
-            sh 'git rev-parse HEAD > GIT_COMMIT'
-            git_commit = readFile('GIT_COMMIT').trim()
-            echo git_commit
+            echo 
         }
 }
