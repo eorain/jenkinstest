@@ -3,5 +3,6 @@ node {
         echo 'Hello to all'
         sh( 'env' )
         sh( 'set' )
+        echo $BRANCH_NAME        
     }
 }
