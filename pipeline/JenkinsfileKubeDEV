@@ -13,10 +13,4 @@ node {
             sh( 'env' )
             sh( 'set' )
         }
-
-        stage ( 'Try git' ) {
-            sh( "git branch" )
-            sh( "git status")
-            echo 
-        }
 }
