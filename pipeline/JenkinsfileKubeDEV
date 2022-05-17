@@ -3,6 +3,14 @@ node {
         echo 'Hello to all'
         sh( 'env' )
         sh( 'set' )
-        echo $BRANCH_NAME        
+        
+        
+        sh 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH'
+        git_branch = readFile('GIT_BRANCH').trim()
+        echo git_branch
+
+        sh 'git rev-parse HEAD > GIT_COMMIT'
+        git_commit = readFile('GIT_COMMIT').trim()
+        echo git_commit
     }
 }
