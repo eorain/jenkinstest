@@ -17,6 +17,7 @@ node {
         stage ( 'Try git' ) {
             sh( "git branch" )
             sh( "git status")
+            echo scm.branches[0].name
         }
 
         stage( 'Update vars' ) {
