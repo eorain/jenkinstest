@@ -3,7 +3,13 @@ node {
         echo 'Hello to all'
         sh( 'env' )
         sh( 'set' )
-        
+    }
+
+    stage( 'Checkout' ) {
+        checkout scm
+    }
+
+    stage( 'Upadte vars' ) {
         sh( 'ls -la' )
         
         sh 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH'
