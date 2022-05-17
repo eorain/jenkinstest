@@ -15,12 +15,16 @@ node {
             sh( 'set' )
         }
 
+        stage ( 'Try git' ) {
+            sh( "git log -n 1 --pretty=format:'%h'" )
+        }
+
         stage( 'Only main' ) {
             when { branch 'main' }
             echo 'We are in branch main !!!'
         }
 
-        stage( 'Upadte vars' ) {
+        stage( 'Update vars' ) {
             sh( 'ls -la' )
             
             sh 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH'
