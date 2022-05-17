@@ -15,8 +15,8 @@ node {
         }
 
         stage ( 'Try git' ) {
-            sh( "git log -n 1 --pretty=format:'%h'" )
             sh( "git branch" )
+            sh( "git status")
         }
 
         stage( 'Update vars' ) {
