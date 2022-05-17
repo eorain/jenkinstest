@@ -1,5 +1,6 @@
 node {
-        stage( 'Hello' ) {
+        stage( 'Hello Main' ) {
+
             echo 'Hello to all'
             sh( 'env' )
             sh( 'set' )
@@ -7,32 +8,5 @@ node {
 
         stage( 'Checkout' ) {
             checkout scm
-        }
-
-        stage( 'Hello2' ) {
-            sh( 'env' )
-            sh( 'set' )
-        }
-
-        stage ( 'Try git' ) {
-            sh( "git log -n 1 --pretty=format:'%h'" )
-            sh( "git branch" )
-        }
-
-        stage( 'Only main' ) {
-            when { branch 'main' }
-            echo 'We are in branch main !!!'
-        }
-
-        stage( 'Update vars' ) {
-            sh( 'ls -la' )
-            
-            sh 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH'
-            git_branch = readFile('GIT_BRANCH').trim()
-            echo git_branch
-
-            sh 'git rev-parse HEAD > GIT_COMMIT'
-            git_commit = readFile('GIT_COMMIT').trim()
-            echo git_commit
         }
 }
