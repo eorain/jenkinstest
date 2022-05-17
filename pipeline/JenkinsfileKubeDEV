@@ -9,6 +9,18 @@ node {
         checkout scm
     }
 
+    stage( 'Hello2' ) {
+        sh( 'env' )
+        sh( 'set' )
+    }
+
+    stage( 'Only main' ) {
+        when {
+         branch 'main'
+        }
+        echo 'We are in branch main !!!'
+    }
+
     stage( 'Upadte vars' ) {
         sh( 'ls -la' )
         
